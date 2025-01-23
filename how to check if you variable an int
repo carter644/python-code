@@ -1,0 +1,21 @@
+# code on how to check if you variable is an int
+
+def main():
+  print("poop")
+  # Declare Any main() Variables - (Not Global)
+  
+  print("carter trying to do code")
+  print('here we go')
+  x = 42
+  print(x)
+  print(type(x))
+  # printing the type so I can make sure that x is an int and not a string
+  y = 2
+  print(y)
+  print(type(y))
+  print(x + y)
+  # adding x and y together to double check that both x and y are int
+  print("Done")
+
+main()
+
