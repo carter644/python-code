@@ -1,0 +1,63 @@
+
+from gpiozero import LED
+import time
+
+white1_led = LED(5) #board 29 (ground board 30) M&M (yellow)
+blue_led = LED(6) #board 31 (ground board 34) M&M (orange)
+white2_led = LED(13) #board 33 (ground board 39) M&M (green)
+                                                        
+def stop_light(status):
+    print(status)
+    white1,blue,white2 = status
+    print(status[white1])
+   
+    if(status[white1]):
+        white1_led.on()
+    else :
+        white1_led.off()
+    
+    if(status[blue]):
+        blue_led.on()
+    else :
+        blue_led.off()
+        
+    if(status[white2]):
+        white2_led.on()
+    else :
+        white2_led.off()
+        
+
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    traffic_light_status = {'white1_LED' : 0, 'blue_LED' : 0, 'white2_LED' : 0}
+   # get_user_stop_light(traffic_light)
+    stop_light(traffic_light_status)
+#     # inprogress input
+    x = int(input("Enter 1 or 0 o White 1 led > "))
+    traffic_light_status["white1_LED"] = x
+
+    stop_light(traffic_light_status)
+       
+    x = int(input("Enter 1 or 0 o Blue 1 led > "))
+    traffic_light_status["blue_LED"] = x
+
+    stop_light(traffic_light_status)
+    
+    x = int(input("Enter 1 or 0 o White 2 led > "))
+    traffic_light_status["white2_LED"] = x
+
+    stop_light(traffic_light_status)
+#     loop=1
+#     while(loop):
+#         x = input("Enter 1 or 0 > ")
+#         if(x=="q" or x=="Q"):
+#             print ("exit")
+#             loop = 0
+#         elif(x=="1") :
+#             print("On")
+#             
+#         else:
+#             print("Off")
+
+main()
