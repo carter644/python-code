@@ -1,0 +1,65 @@
+
+from gpiozero import Servo
+from time import sleep
+ 
+#wave_servo = Servo(4) # board 7 5v 2 ground 9
+max_correction=0.40 # 0.45
+min_correction=0.10 # 0.25
+maxPW=(1.6+max_correction)/1000
+minPW=(1.51-min_correction)/1000
+wave_servo = Servo(4,min_pulse_width= minPW,max_pulse_width= maxPW)   
+#  
+# myCorrection=0
+# maxPW=(2.0+myCorrection)/1000
+# minPW=(1.0-myCorrection)/1000
+#  
+# servo = Servo(servo_wave,min_pulse_width=minPW,max_pulse_width=maxPW)
+#  
+# while True:
+#  
+#   print("Set value range -1.0 to +1.0")
+#   for value in range(0,21):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+#  
+#   print("Set value range +1.0 to -1.0")
+#   for value in range(20,-1,-1):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+
+def wave(wave_data):
+    print(wave_data)
+    print(dir(wave_servo))
+    while True:
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.5)
+        wave_servo.min()
+        print("min", wave_servo.value)
+        sleep(.9)
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.7)
+        wave_servo.max()
+        print("max", wave_servo.value)
+        sleep(1)
+        wave_servo.detach()
+
+    
+    
+def servo_pos(pos):
+    print(pos)
+    wave_servo.value = pos
+    print("pos =", wave_servo)
+    sleep(.5)
+    wave_servo.detach
+
+def main():
+    servo_pos(-.3)
+    wave("pass a dic here later")
+
+main()
