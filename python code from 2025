@@ -1,0 +1,755 @@
+RGB sq
+# SCMakeyBot Robot Control
+# ============================================================================
+# Source: STEAM Clown - www.steamclown.org 
+# GitHub: https://github.com/jimTheSTEAMClown/Python_SCMakeyBot
+# GitHub: https://raw.githubusercontent.com/jimTheSTEAMClown/Python_SCMakeyBot/refs/heads/main/SCMakeyBot_RGB_Eyes_lab1.py
+# Hacker: Jim Burnham - STEAM Clown, Engineer, Teacher, Maker, Propmaster & Adrenologist  
+# This example code is licensed under the CC BY-NC-SA 4.0, GNU GPL and EUPL
+# https://creativecommons.org/licenses/by-nc-sa/4.0/
+# https://www.gnu.org/licenses/gpl-3.0.en.html
+# https://eupl.eu/
+# Program/Design Name:        SCMakeyBot.py <-- or a test/template sub version
+# Description:    This is a program to control a "RGB Eyes of the SCMaketBot"
+# 
+# program description:
+# 1) Read user input from consol or data file, or web.
+# Dependencies:   python3
+#   Inputs: <list any expected user input here>
+#   Outputs: <list any expected program output here>
+# Revision:  
+#  Revision 0.01 - Created 03/16/2025
+# Additional Comments: 
+# 
+# ============================================================================
+# Raspberry Pi Global Setting
+from gpiozero import LED
+from gpiozero import PWMLED
+import time
+
+# Debug Settings
+debug_messages = 1 # If debug messages is 1 then message will be printed, else if 0 they will be silenced
+if debug_messages : print("Debug Message are 'ON'")
+else : print("Debug Message are 'OFF'")
+
+# Raspberry Pi Pins
+red_pwm_pin = PWMLED(17) # board 11 (ground board 9 or 14)
+green_pwm_pin = PWMLED(27) # board 13
+blue_pwm_pin = PWMLED(22) # board 15
+
+def eyes_RGB(eyes_status):
+    if debug_messages : print("Running eyes_RGB function")
+    if debug_messages : print(eyes_status)
+    
+    red,green,blue = eyes_status
+    
+    red_pwm_pin.value = eyes_status[red]
+    green_pwm_pin.value = eyes_status[green]
+    blue_pwm_pin.value = eyes_status[blue]
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    
+    print("enter a number")
+    r = float(input("enter a number from 0-1 for red"))
+    g = float(input("enter a number from 0-1 for green"))
+    b = float(input("enter a number from 0-1 for blue"))
+    eyes_RGBLEDs = {'red_RGBLED':r, 'green_RGBLED':g, 'blue_RGBLED':b}
+    print("number, ", r,g,b)
+    #eyes_RGBLEDs = {'left_eye':{'leye_red_RGBLED':1, 'leye_green_RGBLED':.5, 'leye_blue_RGBLED':.99}, 'right_eye':{'reye_red_RGBLED':1, 'reye_green_RGBLED':.5, 'reye_blue_RGBLED':.99}}
+    if debug_messages : print("Calling eyes_RGB function")
+    eyes_RGB(eyes_RGBLEDs)
+    if debug_messages : print("Returned from eyes_RGB function")
+    #why
+    
+main()
+
+
+Mm RGB
+# SCMakeyBot Robot Control
+# ============================================================================
+# Source: STEAM Clown - www.steamclown.org 
+# GitHub: https://github.com/jimTheSTEAMClown/Python_SCMakeyBot
+# GitHub: https://raw.githubusercontent.com/jimTheSTEAMClown/Python_SCMakeyBot/refs/heads/main/SCMakeyBot_RGB_Eyes_lab1.py
+# Hacker: Jim Burnham - STEAM Clown, Engineer, Teacher, Maker, Propmaster & Adrenologist  
+# This example code is licensed under the CC BY-NC-SA 4.0, GNU GPL and EUPL
+# https://creativecommons.org/licenses/by-nc-sa/4.0/
+# https://www.gnu.org/licenses/gpl-3.0.en.html
+# https://eupl.eu/
+# Program/Design Name:        SCMakeyBot.py <-- or a test/template sub version
+# Description:    This is a program to control a "RGB Eyes of the SCMaketBot"
+# 
+# program description:
+# 1) Read user input from consol or data file, or web.
+# Dependencies:   python3
+#   Inputs: <list any expected user input here>
+#   Outputs: <list any expected program output here>
+# Revision:  
+#  Revision 0.01 - Created 03/16/2025
+# Additional Comments: 
+# 
+# ============================================================================
+# Raspberry Pi Global Setting
+from gpiozero import LED
+from gpiozero import PWMLED
+import time
+
+# Debug Settings
+debug_messages = 1 # If debug messages is 1 then message will be printed, else if 0 they will be silenced
+if debug_messages : print("Debug Message are 'ON'")
+else : print("Debug Message are 'OFF'")
+
+
+warning_messages = 1 # If debug messages is 1 then message will be printed, else if 0 they will be silenced
+if warning_messages : print("Warning Message are 'ON'")
+else : print("Warning Message are 'OFF'")
+
+
+
+# Raspberry Pi Pins
+l_red_pwm_pin = PWMLED(17) # board 11 (ground board 9 or 14)
+l_green_pwm_pin = PWMLED(27) # board 13
+l_blue_pwm_pin = PWMLED(22) # board 15
+
+r_red_pwm_pin = PWMLED(16) # board 36 (ground board 34 or 39)
+r_green_pwm_pin = PWMLED(20) # board 38
+r_blue_pwm_pin = PWMLED(21) # board 40
+
+def eyes_RGB(eyes_status):
+    if debug_messages : print("Running eyes_RGB function")
+    if debug_messages : print(eyes_status)
+    
+    left_eye, right_eye = eyes_status
+    if debug_messages : print(left_eye)
+    if debug_messages : print(right_eye)
+    
+    lr,lg,lb = left_eye
+    print(lr,lg,lb)
+    print(left_eye[lr])
+    print(left_eye[lg])
+    print(left_eye[lb])
+    l_red_pwm_pin.value = left_eye[lr]
+    l_green_pwm_pin.value = left_eye[lg]
+    l_blue_pwm_pin.value = left_eye[lb]
+    
+    rr,rg,rb = right_eye
+    print(rr,rg,rb)
+    print(right_eye[rr])
+    print(right_eye[rg])
+    print(right_eye[rb])
+    r_red_pwm_pin.value = right_eye[rr]
+    r_green_pwm_pin.value = right_eye[rg]
+    r_blue_pwm_pin.value = right_eye[rb]
+    
+    #red,green,blue = eyes_status
+    
+   # red_pwm_pin.value = eyes_status[red]
+   # green_pwm_pin.value = eyes_status[green]
+  #  blue_pwm_pin.value = eyes_status[blue]
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    
+    print("enter a number")
+    lr = float(input("enter a number from 0-1 for left red"))
+    lg = float(input("enter a number from 0-1 for left green"))
+    lb = float(input("enter a number from 0-1 for left blue"))
+    rr = float(input("enter a number from 0-1 for right red"))
+    rg = float(input("enter a number from 0-1 for right green"))
+    rb = float(input("enter a number from 0-1 for right blue"))
+    eyes_RGBLEDs = [{'red_RGBLED':lr, 'green_RGBLED':lg, 'blue_RGBLED':lb}, {'red_RGBLED':rr, 'green_RGBLED':rg, 'blue_RGBLED':rb}]
+    print("number, ", lr,lg,lb,rr,rg,rb)
+    #eyes_RGBLEDs = {'left_eye':{'leye_red_RGBLED':1, 'leye_green_RGBLED':.5, 'leye_blue_RGBLED':.99}, 'right_eye':{'reye_red_RGBLED':1, 'reye_green_RGBLED':.5, 'reye_blue_RGBLED':.99}}
+    if debug_messages : print("Calling eyes_RGB function")
+    eyes_RGB(eyes_RGBLEDs)
+    if debug_messages : print("Returned from eyes_RGB function")
+    #why
+    
+main()
+
+Sq LED
+
+from gpiozero import LED
+import time
+
+white1_led = LED(5) #board 29
+blue_led = LED(6) #board 31
+white2_led = LED(13) #board 33
+                                                        
+def stop_light(status):
+    print(status)
+    white1,blue,white2 = status
+    print(status[white1])
+   
+    if(status[white1]):
+        white1_led.on()
+    else :
+        white1_led.off()
+    
+    if(status[blue]):
+        blue_led.on()
+    else :
+        blue_led.off()
+        
+    if(status[white2]):
+        white2_led.on()
+    else :
+        white2_led.off()
+        
+
+def get_user_light(bits):
+    stop_bin + input("Enter a binary number for the squirrel")
+    print(stop_bin)
+    stop_bin_check = int(stop_bin)
+    if (stop_bin_check > -1) and (stop_bin_check < 8):
+        print("probably a decimal number between 0-7")
+        stop_bin + bin(stop_bin_check)
+        print(stop_bin)
+        if stop_bin{2} == "1":
+            bits('white_LED':1)
+
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    traffic_light_status = {'white1_LED' : 0, 'blue_LED' : 0, 'white2_LED' : 0}
+    get_user_stop_light(traffic_light)
+    stop_light(traffic_light_status)
+    
+
+main()
+
+Sq LED 2
+
+from gpiozero import LED
+import time
+
+white1_led = LED(5) #board 29 (ground board 30) M&M (yellow)
+blue_led = LED(6) #board 31 (ground board 34) M&M (orange)
+white2_led = LED(13) #board 33 (ground board 39) M&M (green)
+                                                        
+def stop_light(status):
+    print(status)
+    white1,blue,white2 = status
+    print(status[white1])
+   
+    if(status[white1]):
+        white1_led.on()
+    else :
+        white1_led.off()
+    
+    if(status[blue]):
+        blue_led.on()
+    else :
+        blue_led.off()
+        
+    if(status[white2]):
+        white2_led.on()
+    else :
+        white2_led.off()
+        
+
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    traffic_light_status = {'white1_LED' : 0, 'blue_LED' : 0, 'white2_LED' : 0}
+   # get_user_stop_light(traffic_light)
+    stop_light(traffic_light_status)
+#     # inprogress input
+    x = int(input("Enter 1 or 0 o White 1 led > "))
+    traffic_light_status["white1_LED"] = x
+
+    stop_light(traffic_light_status)
+       
+    x = int(input("Enter 1 or 0 o Blue 1 led > "))
+    traffic_light_status["blue_LED"] = x
+
+    stop_light(traffic_light_status)
+    
+    x = int(input("Enter 1 or 0 o White 2 led > "))
+    traffic_light_status["white2_LED"] = x
+
+    stop_light(traffic_light_status)
+#     loop=1
+#     while(loop):
+#         x = input("Enter 1 or 0 > ")
+#         if(x=="q" or x=="Q"):
+#             print ("exit")
+#             loop = 0
+#         elif(x=="1") :
+#             print("On")
+#             
+#         else:
+#             print("Off")
+
+main()
+
+Mm LED
+
+
+from gpiozero import LED
+import time
+
+yellow_led = LED(5) #board 29 (ground board 30) M&M (yellow)
+orange_led = LED(6) #board 31 (ground board 34) M&M (orange)
+green_led = LED(13) #board 33 (ground board 39) M&M (green)
+                                                        
+def stop_light(status):
+    print(status)
+    yellow,orange,green = status
+    print(status[yellow])
+   
+    if(status[yellow]):
+        yellow_led.on()
+    else :
+        yellow_led.off()
+    
+    if(status[orange]):
+        orange_led.on()
+    else :
+        orange_led.off()
+        
+    if(status[green]):
+        green_led.on()
+    else :
+        green_led.off()
+        
+
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    traffic_light_status = {'yellow_LED' : 0, 'orange_LED' : 0, 'green_LED' : 0}
+   # get_user_stop_light(traffic_light)
+    stop_light(traffic_light_status)
+#     # inprogress input
+    x = int(input("Enter 1 or 0 o Yellow led > "))
+    traffic_light_status["yellow_LED"] = x
+
+    stop_light(traffic_light_status)
+       
+    x = int(input("Enter 1 or 0 o Orange 1 led > "))
+    traffic_light_status["orange_LED"] = x
+
+    stop_light(traffic_light_status)
+    
+    x = int(input("Enter 1 or 0 o Green led > "))
+    traffic_light_status["green_LED"] = x
+
+    stop_light(traffic_light_status)
+#     loop=1
+#     while(loop):
+#         x = input("Enter 1 or 0 > ")
+#         if(x=="q" or x=="Q"):
+#             print ("exit")
+#             loop = 0
+#         elif(x=="1") :
+#             print("On")
+#             
+#         else:
+#             print("Off")
+
+main()
+
+Mm SERVO
+
+
+from gpiozero import Servo
+from time import sleep
+ 
+#wave_servo = Servo(4) # board 7 5v 2 ground 9
+max_correction=0.40 # 0.45
+min_correction=0.10 # 0.25
+maxPW=(2.0+max_correction)/1000
+minPW=(0.95-min_correction)/1000
+wave_servo = Servo(4,min_pulse_width= minPW,max_pulse_width= maxPW)   
+#  
+# myCorrection=0
+# maxPW=(2.0+myCorrection)/1000
+# minPW=(1.0-myCorrection)/1000
+#  
+# servo = Servo(servo_wave,min_pulse_width=minPW,max_pulse_width=maxPW)
+#  
+# while True:
+#  
+#   print("Set value range -1.0 to +1.0")
+#   for value in range(0,21):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+#  
+#   print("Set value range +1.0 to -1.0")
+#   for value in range(20,-1,-1):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+
+def wave(wave_data):
+    print(wave_data)
+    print(dir(wave_servo))
+    while True:
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.5)
+        wave_servo.min()
+        print("min", wave_servo.value)
+        sleep(.9)
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.5)
+        wave_servo.max()
+        print("max", wave_servo.value)
+        sleep(1)
+        wave_servo.detach()
+
+    
+    
+def servo_pos(pos):
+    print(pos)
+    wave_servo.value = pos
+    print("pos =", wave_servo)
+    sleep(.5)
+    wave_servo.detach
+
+def main():
+    servo_pos(-.2)
+    wave("pass a dic here later")
+
+main()
+
+
+Sq SEVRO
+
+
+
+
+from gpiozero import Servo
+from time import sleep
+ 
+#wave_servo = Servo(4) # board 7 5v 2 ground 9
+max_correction=0.40 # 0.45
+min_correction=0.10 # 0.25
+maxPW=(1.6+max_correction)/1000
+minPW=(1.51-min_correction)/1000
+wave_servo = Servo(4,min_pulse_width= minPW,max_pulse_width= maxPW)   
+#  
+# myCorrection=0
+# maxPW=(2.0+myCorrection)/1000
+# minPW=(1.0-myCorrection)/1000
+#  
+# servo = Servo(servo_wave,min_pulse_width=minPW,max_pulse_width=maxPW)
+#  
+# while True:
+#  
+#   print("Set value range -1.0 to +1.0")
+#   for value in range(0,21):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+#  
+#   print("Set value range +1.0 to -1.0")
+#   for value in range(20,-1,-1):
+#     value2=(float(value)-10)/10
+#     servo.value=value2
+#     print(value2)
+#     sleep(0.5)
+
+def wave(wave_data):
+    print(wave_data)
+    print(dir(wave_servo))
+    while True:
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.5)
+        wave_servo.min()
+        print("min", wave_servo.value)
+        sleep(.9)
+        wave_servo.mid()
+        print("mid", wave_servo.value)
+        sleep(0.7)
+        wave_servo.max()
+        print("max", wave_servo.value)
+        sleep(1)
+        wave_servo.detach()
+
+    
+    
+def servo_pos(pos):
+    print(pos)
+    wave_servo.value = pos
+    print("pos =", wave_servo)
+    sleep(.5)
+    wave_servo.detach
+
+def main():
+    servo_pos(-.3)
+    wave("pass a dic here later")
+
+main()
+
+ HEX CODE
+
+
+# SCMakeyBot Robot Control
+# ============================================================================
+# Source: STEAM Clown - www.steamclown.org
+# GitHub: https://github.com/jimTheSTEAMClown/Python_SCMakeyBot
+# GitHub: https://raw.githubusercontent.com/jimTheSTEAMClown/Python_SCMakeyBot/refs/heads/main/SCMakey_func_template.py
+# Hacker: Jim Burnham - STEAM Clown, Engineer, Teacher, Maker, Propmaster & Adrenologist  
+# This example code is licensed under the CC BY-NC-SA 4.0, GNU GPL and EUPL
+# https://creativecommons.org/licenses/by-nc-sa/4.0/
+# https://www.gnu.org/licenses/gpl-3.0.en.html
+# https://eupl.eu/
+# Program/Design Name:        SCMakeyBot.py <-- or a test/template sub version
+# Description:    This is a program to show the function calles of the SCMaketBot"
+#
+# program description:
+# 1) Read user input from consol or data file, or web.
+# Dependencies:   python3
+#   Inputs: <list any expected user input here>
+#   Outputs: <list any expected program output here>
+# Revision:  
+#  Revision 0.01 - Created 03/19/2025
+# Additional Comments:
+#
+# ============================================================================
+# Raspberry Pi Global Setting
+from gpiozero import LED
+from gpiozero import PWMLED
+import time
+
+# Debug Settings
+debug_messages = 1 # If debug messages is 1 then message will be printed, else if 0 they will be silenced
+if debug_messages : print("Debug Message are 'ON'")
+else : print("Debug Message are 'OFF'")
+
+warning_messages = 1 # If debug messages is 1 then message will be printed, else if 0 they will be silenced
+if warning_messages : print("Warning Message are 'ON'")
+else : print("Warning Message are 'OFF'")
+# Raspberry Pi Pins
+r_red_pwm_pin = PWMLED(14)
+r_green_pwm_pin = PWMLED(15)
+r_blue_pwm_pin = PWMLED(18)
+
+l_red_pwm_pin = PWMLED(27)
+l_green_pwm_pin = PWMLED(22)
+l_blue_pwm_pin = PWMLED(23)
+
+red_led = LED(3)
+yellow_led = LED(4)
+green_led = LED(17)
+
+#print(dir(r_red_pwm_pin))
+
+def stop_light(traffic):
+    if debug_messages : print("Running stop_light function")
+    if debug_messages : print(traffic)
+    red,yellow,green = traffic
+    if debug_messages : print(traffic[red])
+
+def eyes_RGB(eyes):
+    if debug_messages : print("Running eyes_RGB function")
+    if debug_messages : print(eyes)
+       
+    left_eye, right_eye = eyes
+    if debug_messages : print(left_eye)
+    if debug_messages : print(right_eye)
+   
+def get_robot_feature_data():
+    hex_code = "#4ebd51"
+    hex_code = hex_code.upper()
+    hex_green = hex_code[3:5]
+    print(hex_green)
+    
+    dec_hex_green = int(hex_green,16)
+    print(dec_hex_green)
+    green_brightness = dec_hex_green / 256
+    print(green_brightness)
+    
+    if debug_messages : print("Runninng get_robot_feature_data function")
+    right_eye = {green_brightness}
+    left_eye =  {green_brightness}
+    stop_light = {'red_LED':1, 'yellow_LED':0, 'green_LED':0}
+    # servo
+    rfd = [stop_light, left_eye, right_eye]
+    if debug_messages : print(rfd)
+    if debug_messages : print("Returning get_robot_feature_data function")
+    return(rfd)
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    if debug_messages : print("Calling get_robot_feature_data function")
+#    robot_features = get_robot_feature_data()
+    stop_light_LEDs, left_RGB, right_RGB = get_robot_feature_data()
+    if debug_messages : print(stop_light_LEDs)
+    if debug_messages : print(left_RGB)
+    if debug_messages : print(right_RGB)
+
+    if debug_messages : print("Calling stop_light function")
+    stop_light(stop_light_LEDs)
+    if debug_messages : print("Returned from stop_light function")
+
+    if debug_messages : print("Calling eyes_RGB function")
+    eyes_RGB([left_RGB,right_RGB])
+    if debug_messages : print("Returned from eyes_RGB function")
+
+SWITCH CODE
+
+# import gpiozero
+from gpiozero import LED
+from gpiozero import Button
+import time
+
+# Using BCM GPIO3 I/O on BOARD pin 5
+red_led = LED(3) # BCM GPIO3 = BOARD 5
+red_button = Button(7,pull_up = True,bounce_time= None) 
+while(True):
+  if red_button.is_pressed:
+    print("Switch is pressed")
+  else:
+    print("Switch is not pressed")
+  # Add a small delay if needed to avoid excessive CPU usage
+  time.sleep(0.1)
+
+SWITCH PLUS LED CODE
+
+
+# import gpiozero
+from gpiozero import LED
+from gpiozero import Button
+import time
+
+# Using BCM GPIO3 I/O on BOARD pin 5
+red_led = LED(3) # BCM GPIO3 = BOARD 5
+red_button = Button(7,pull_up = True,bounce_time= None) 
+while(True):
+  if red_button.is_pressed:
+    print("Switch is pressed")
+    red_led.on()
+  else:
+    red_led.off()  
+    print("Switch is not pressed")
+  # Add a small delay if needed to avoid excessive CPU usage
+  time.sleep(0.1)
+
+OPEN FILE
+
+
+fhand = open('../tmp/text-file-matrix.txt', 'r')
+print(fhand)
+
+stuff = 'Hello\nWorld!'
+print(stuff)
+print(len(stuff))
+stuff = 'X\nY'
+print(stuff)
+len(stuff)
+
+MM LED code 2
+
+
+
+from gpiozero import LED
+import time
+
+yellow_led = LED(5) #board 29 (ground board 30) M&M (yellow)
+orange_led = LED(6) #board 31 (ground board 34) M&M (orange)
+green_led = LED(13) #board 33 (ground board 39) M&M (green)
+                                                        
+def stop_light(status):
+    print(status)
+    yellow,orange,green = status
+    print(status[yellow])
+   
+    if(status[yellow]):
+        yellow_led.on()
+    else :
+        yellow_led.off()
+    
+    if(status[orange]):
+        orange_led.on()
+    else :
+        orange_led.off()
+        
+    if(status[green]):
+        green_led.on()
+    else :
+        green_led.off()
+        
+
+
+def main():
+    print("Welcome To The STEAM Clown Makey Bot")
+    traffic_light_status = {'yellow_LED' : 0, 'orange_LED' : 0, 'green_LED' : 0}
+   # get_user_stop_light(traffic_light)
+    stop_light(traffic_light_status)
+#     # inprogress input
+    x = int(input("Enter 1 or 0 o Yellow led > "))
+    traffic_light_status["yellow_LED"] = x
+
+    stop_light(traffic_light_status)
+       
+    x = int(input("Enter 1 or 0 o Orange 1 led > "))
+    traffic_light_status["orange_LED"] = x
+
+    stop_light(traffic_light_status)
+    
+    x = int(input("Enter 1 or 0 o Green led > "))
+    traffic_light_status["green_LED"] = x
+
+    stop_light(traffic_light_status)
+#     loop=1
+#     while(loop):
+#         x = input("Enter 1 or 0 > ")
+#         if(x=="q" or x=="Q"):
+#             print ("exit")
+#             loop = 0
+#         elif(x=="1") :
+#             print("On")
+#             
+#         else:
+#             print("Off")
+
+main()
+
+
+BLINK
+
+
+from gpiozero import LED
+import time
+
+red_led = LED(22) # BCM GPIO3 = BOARD 5
+
+while(True):
+    print("on")
+    red_led.on()
+    time.sleep(1)
+    print("off")
+    red_led.off()
+    time.sleep(1)
+print("Done")    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
